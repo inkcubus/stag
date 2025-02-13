@@ -74,7 +74,6 @@ Darktable however generates a sidecar file in the form `PICT0001.JPG.XMP`. Which
 
 So to stay clear of any source of chaos, it's highly recommended to check the "use darktable-compatible filenames" checkbox when working with darktable.
 
-
 ## FAQ
 
 ### I'm very skeptical about allowing an AI to look at my images. Can you guarantee that STAG isn't sending my stuff to Sam Altman?
@@ -83,8 +82,48 @@ Yes, we can. Once STAG has downloaded the recognize-anything model from huggingf
 ### But isn't using AI bad for the environment?
 It's important to understand that not everything utilizing AI has to do with LLMs running on multi-billion dollar server farms owned by billionaires. STAG uses a very small convolutional neural network (CNN) which does not even need a GPU to run fast and efficiently. You can run STAG on a perfectly normal computer and not draw more power than your Adblocker needs for making the internet bearable.
 
+### I don't want your fancy GUI. Don't you have a command line tool?
+Of course. "stag.py" can be called from the command line. Its usage is:
+```
+stag.py [-h] [--prefix STR] [--force] [--test] [--prefer-exact-filenames] DIR
+```
+where
+- `force` forces STAG to write tags even if there are already tags with the given prefix
+- `test` instructs STAG not to write any changes to disc
+- `prefer-exact-filenames` creates xmp files with complete ("x.jpg.xmp") filenames.
+
+
+
 ### Why is it called STAG?
 Because Stephan wrote it. It's Stephan's tagger, or STAG for short.
+
+
+## Local development
+
+Prerequisites: Python3.1
+
+Create a virtual environment (highly recommended):
+
+    python3 -m venv stag_env
+
+Activate it:
+
+    source stag_env/bin/activate
+
+Install Dependencies
+
+    pip install -r requirements.txt
+
+...and start hacking away. For example, run the command line tool for testing:
+
+    see usage above, ./stag.py myImages
+
+or build an executable for your platform:
+
+    makeExecutable.sh linux
+
+(please be aware that pyinstaller provides no cross-platform functionality. If you want to build a windows version, you have to do it in a windows environment. I know it hurts, but it's doable.)
+
 
 ## Licensing and Contribution
 
