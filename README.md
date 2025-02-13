@@ -87,8 +87,4 @@ Because Stephan wrote it. It's Stephan's tagger, or STAG for short.
 
 STAG is licensed under the Apache-2.0 license, meaning it is open source and freely available to the community. Contributions are welcome, and users are encouraged to explore the source code, suggest improvements, and report issues.
 
-## Conclusion
-
-STAG is a straightforward tool designed to make image tagging easier for photographers. By automating the tagging process and maintaining the integrity of original files, STAG assists photographers in organizing and managing their digital libraries efficiently.
-
 For more information, updates, or to contribute, visit our website at [divis.io](https://divis.io).
