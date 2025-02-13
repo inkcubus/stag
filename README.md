@@ -70,7 +70,10 @@ Unfortunately, problems can arise if STAG has to create XMP file on its own. Alt
 
 For example, almost all applications generate a `PICT0001.XMP` sidedcar file for an image file that's named `PICT0001.JPG`.
 
-Darktable however generates a sidecar file in the form `PICT0001.JPG.XMP`. Which of course is more logical, but can cause problems when exchanging image metadata with other programs. 
+Darktable however generates a sidecar file in the form `PICT0001.JPG.XMP`. Which of course is more logical, but can cause problems when exchanging image metadata with other programs. To add insult to injury, darktable is able to read metadata in the form of `PICT0001.xmp` but has the habit of writing a new metadata file of its own when importing from such files.
+
+So to stay clear of any source of chaos, it's highly recommended to check the "use darktable-compatible filenames" checkbox when working with darktable.
+
 
 ## FAQ
 
