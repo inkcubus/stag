@@ -6,6 +6,8 @@ STAG is an open source application designed for both amateur and professional ph
 
 STAG respects the integrity of your original image files, meaning they remain unaltered throughout the process.
 
+![stag100preview.png](images/stag100preview.png)
+
 ## How It Works
 
 ### Image Processing

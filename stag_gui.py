@@ -58,6 +58,8 @@ def run_tagger_directly(imagedir, prefix, force, test, prefer_exact_filenames, s
     dl_dir = os.path.join(huggingface_hub.constants.HF_HUB_CACHE,"models--xinyu1205--recognize-anything-plus-model")
     if not os.path.isdir(dl_dir):
         show_startup_alert()
+        print("First run – now downloading the model file.")
+        print("This process can take a little while and is only executed once.")
 
     pretrained = hf_hub_download(repo_id="xinyu1205/recognize-anything-plus-model", filename="ram_plus_swin_large_14m.pth")
 
