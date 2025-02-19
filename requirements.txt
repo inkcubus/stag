@@ -10,13 +10,12 @@ pyinstaller==6.12.0
 tkinter-tooltip==3.1.2
 
 --extra-index-url https://download.pytorch.org/whl/cpu
-torch==2.6.0+cpu
+torch==2.6.0+cpu; sys_platform == 'linux'
 
 --extra-index-url https://download.pytorch.org/whl/cpu
-torchaudio==2.6.0+cpu
+torchaudio==2.6.0+cpu; sys_platform == 'linux'
 
 --extra-index-url https://download.pytorch.org/whl/cpu
-torchvision==0.21.0+cpu
-
+torchvision==0.21.0+cpu; sys_platform == 'linux'
 
 ram~=0.0.1
