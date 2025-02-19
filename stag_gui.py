@@ -8,13 +8,18 @@
 
 import os
 import tkinter as tk
-from tkinter import filedialog, ttk
+from tkinter import filedialog, ttk, messagebox
 import threading
 import sys
+
+import huggingface_hub
 from PIL import Image, ImageTk
 import webbrowser
-from stag import SKTagger, hf_hub_download
+from stag import SKTagger
 from tktooltip import ToolTip
+from huggingface_hub import hf_hub_download
+
+
 
 class TextRedirector:
     def __init__(self, text_widget, tag="stdout"):
@@ -48,6 +53,11 @@ def run_tagger_directly(imagedir, prefix, force, test, prefer_exact_filenames, s
     sys.stderr = TextRedirector(text_output, "stderr")
 
     print("Starting tagger...")
+
+    # check if model was already downloaded
+    dl_dir = os.path.join(huggingface_hub.constants.HF_HUB_CACHE,"models--xinyu1205--recognize-anything-plus-model")
+    if not os.path.isdir(dl_dir):
+        show_startup_alert()
 
     pretrained = hf_hub_download(repo_id="xinyu1205/recognize-anything-plus-model", filename="ram_plus_swin_large_14m.pth")
 
@@ -98,6 +108,12 @@ def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller """
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
     return os.path.join(base_path, relative_path)
+
+def show_startup_alert():
+    messagebox.showinfo("Welcome to STAG", "In order to be able to tag your images, STAG now needs to download "
+    "the recognize-anything model from huggingface. This might take a while and is perfectly normal. The download "
+    "is only done once, so the next time you start STAG you will be ready to go in an instant.")
+
 
 if __name__ == '__main__':
 
@@ -197,4 +213,5 @@ if __name__ == '__main__':
     text_frame.rowconfigure(0, weight=1)
 
     cancel_button.config(state='disabled')
+
     root.mainloop()
