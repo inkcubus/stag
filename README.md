@@ -34,7 +34,7 @@ STAG is capable of handling a variety of image formats, including:
 
 STAG is distributed as a standalone application, thanks to PyInstaller. We offer pre-built binaries for Windows (amd64), macOS (arm64) and Linux (amd64).
 
-To install STAG, simply download the binary for your platform and unzip it at a convenient place.
+To install STAG, simply download the binary for your platform from the [Releases Page](https://github.com/DIVISIO-AI/stag/releases/tag/1.0.0) and unzip it at a convenient place.
 
 **Important**: When running the tagger for the first time, STAG needs to download the recognize-anything model from huggingface in order to be able to run locally on your own machine only. As the model is 3.2GB in size, this process can take a few minutes. The model is only downloaded once.
 
