@@ -11,6 +11,7 @@ import tkinter as tk
 from tkinter import filedialog, ttk, messagebox
 import threading
 import sys
+import ctypes
 
 import huggingface_hub
 from PIL import Image, ImageTk
@@ -117,6 +118,31 @@ def show_startup_alert():
     "is only done once, so the next time you start STAG you will be ready to go in an instant.")
 
 
+
+def apply_hidpi_scaling(root):
+    # Check if the system is Windows and supports DPI awareness
+    if hasattr(ctypes, 'windll'):
+        ctypes.windll.shcore.SetProcessDpiAwareness(1)
+
+    # Calculate scale based on screen resolution
+    try:
+        # Get screen's width in pixels and in mm
+        screen_width_px = root.winfo_screenwidth()
+        screen_width_mm = root.winfo_screenmmwidth()
+
+        # Calculate DPI (dots per inch)
+        screen_dpi = screen_width_px / (screen_width_mm / 25.4)
+
+        # Determine scaling factor (common HiDPI scaling is 1.5 or 2)
+        scaling_factor = screen_dpi / 96  # 96 DPI is standard
+
+        # Set Tkinter scaling
+        if scaling_factor > 1:
+            root.tk.call('tk', 'scaling', scaling_factor)
+    except Exception as e:
+        print(f"Could not determine DPI scaling factor: {e}")
+
+
 if __name__ == '__main__':
 
     version_identifier = "1.0.0"
@@ -128,6 +154,8 @@ if __name__ == '__main__':
     stag_logo_image = Image.open(stag_logo_file)
 
     root = tk.Tk()
+    apply_hidpi_scaling(root)
+
     root.title("DIVISIO STAG")
 
     original_size = divisio_logo_image.size
