@@ -145,7 +145,7 @@ def apply_hidpi_scaling(root):
 
 if __name__ == '__main__':
 
-    version_identifier = "1.0.0"
+    version_identifier = "1.0.1"
 
     img_dir = resource_path("images")
     divisio_logo_file = os.path.join(img_dir, "divisio_design-assets_logo_schwarz_WEB.png")
